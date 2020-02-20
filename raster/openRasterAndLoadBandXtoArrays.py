@@ -1,4 +1,4 @@
-def OpenRastersAndLoadBandXtoArrays(rasternameList,bn):
+def openRastersAndLoadBandXtoArrays(rasternameList,bn):
     """Full Paths need to be provided.
     bn - bandnumber"""
     import gdal
