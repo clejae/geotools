@@ -1,4 +1,4 @@
-def GeneratePosOrNegRandInt(minimum, maximum):
+def generatePosOrNegRandInt(minimum, maximum):
     """
     Generates a random value between two values. Specialty: these two values can range form negative to positive values.
     :param minimum: minimum number
