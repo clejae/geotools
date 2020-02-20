@@ -1,4 +1,4 @@
-def MakeSlices(array, win_size):
+def makeSlices(array, win_size):
     """Return a list of slices given a window size.
     data     - two-dimensional array to get slices from
     win_size - tuple of (rows, columns) for the moving window
