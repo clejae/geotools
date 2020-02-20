@@ -1,4 +1,4 @@
-def MakeRaster(in_ds, fn, data, data_type, nodata=None):
+def makeRaster(in_ds, fn, data, data_type, nodata=None):
     """Create a one-band GeoTIFF.
     in_ds     - datasource to copy projection and geotransform from
     fn        - path to the file to create
