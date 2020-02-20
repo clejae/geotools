@@ -1,4 +1,4 @@
-def ReprojectAndSaveNewShapefile(inFilepath,outFilepath,to_EPSG):
+def reprojectAndSaveNewShapefile(inFilepath,outFilepath,to_EPSG):
     """
     Reprojects a given Shapefile into a specified Coordinate system.
     :param inFilepath: Full path with file name of input Shapefile, string
