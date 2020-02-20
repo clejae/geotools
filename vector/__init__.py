@@ -1,2 +1,2 @@
-from .PrintLayers import PrintLayers
-from .ReprojectAndSaveNewShapefile import ReprojectAndSaveNewShapefile
+from .printLayers import printLayers
+from .reprojectAndSaveNewShapefile import reprojectAndSaveNewShapefile
