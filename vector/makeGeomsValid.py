@@ -4,9 +4,9 @@ def makeGeomsValid(in_shp_pth):
     :param in_shp_pth: Input Shapefile
     :return: Updates the input shapefile.
     """
-	
-	import ogr
-	
+
+    import ogr
+
     in_shp = ogr.Open(in_shp_pth, 1)
     in_lyr = in_shp.GetLayer()
     for feat in in_lyr:

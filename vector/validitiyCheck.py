@@ -5,9 +5,8 @@ def validitiyCheck(in_shp_pth, id_field_name):
     :param id_field_name: Field name of ID, string.
     :return: Prints the file path and the ID of the geoms that are not valid.
     """
-	
-	import ogr
-	
+    import ogr
+
     in_shp = ogr.Open(in_shp_pth)
     in_lyr = in_shp.GetLayer()
 

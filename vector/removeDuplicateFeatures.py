@@ -1,6 +1,5 @@
 def removeDuplicateFeatures(in_shp_pth, out_folder, return_duplicates=False):
-	import os
-	import ogr
+
     """
     VERY SLOW FUNCTION. 
     Loops through features of a shapefile with geom type polygon and checks for duplicates. 
@@ -15,6 +14,9 @@ def removeDuplicateFeatures(in_shp_pth, out_folder, return_duplicates=False):
     :param return_duplicates: Boolean. Set True if duplicates should be returned.
     :return: No object returned, but shapefile written to disc. 
     """
+
+    import os
+    import ogr
 
     try:
         if not os.path.exists(out_folder):

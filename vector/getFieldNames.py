@@ -3,9 +3,8 @@ def getFieldNames(shp):
     :param shp: Shapefile to get the field names from
     :return: List of all field names
     """
-	
-	import ogr
-	
+    import ogr
+
     lyr = shp.GetLayer()
     lyr_def = lyr.GetLayerDefn()
 

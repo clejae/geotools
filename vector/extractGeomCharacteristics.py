@@ -6,9 +6,9 @@ def extractGeomCharacteristics(in_shp_pth, id_field):
     :param id_field: Name of field with ID of polygons
     :return: Three lists, 1: List of IDs, 2: List of areas, 3: List of centroids
     """
-	
-	import ogr
-	
+
+    import ogr
+
     in_shp = ogr.Open(in_shp_pth, 0)
     in_lyr = in_shp.GetLayer()
 

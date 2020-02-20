@@ -1,10 +1,12 @@
 def removeNoneGeoms(in_shp_pth):
-    import ogr
+
     """
     Sometimes a shapefile has features, that have no geoms. This function removes any geom that is None.
     :param in_shp_pth: Input shapefile  
     :return: Updates the input shapefile.
     """    
+
+    import ogr
 
     file_name = os.path.basename(in_shp_pth)[:-4]
 

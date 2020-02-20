@@ -7,9 +7,8 @@ def identifyIntersections(in_shp_pth, out_pth):
     "_intersection".
     :return: No object returned, but shapefile will be written to disc.
     """
-	
-	import os
-	import ogr
+    import os
+    import ogr
 
     file_name = os.path.basename(in_shp_pth)[:-4]
 
