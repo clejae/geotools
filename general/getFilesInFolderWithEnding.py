@@ -1,4 +1,4 @@
-def GetFilesinFolderWithEnding(folder, ext, fullPath):
+def getFilesinFolderWithEnding(folder, ext, fullPath):
     """Opens all files with the specified ending.
     Ending has to be a string.
     """
