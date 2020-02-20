@@ -4,8 +4,8 @@ def copyLayerToMemory(in_lyr):
     :param in_lyr: Layer of a shapefile
     :return: Copy of the layer that is stored in memory
     """
-	
-	import ogr
+
+    import ogr
 		
     drv_mem = ogr.GetDriverByName('Memory')
     shp_copy = drv_mem.CreateDataSource('temp')
