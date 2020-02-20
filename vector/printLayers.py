@@ -1,4 +1,4 @@
-def PrintLayers(path):
+def printLayers(path):
     """Prints all available layer in a folder."""
     import ogr
     ds = ogr.Open(path, 0)
