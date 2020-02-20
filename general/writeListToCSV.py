@@ -1,4 +1,4 @@
-def WriteListToCSV(inputList, outputFile):
+def writeListToCSV(inputList, outputFile):
     """
     Write a provided list with several sublists(i.e. the rows) into a csv File. Every sublist is written into one line.
     :param inputList: List that contains several sublists. List[Sublist,Sublist,etc]
