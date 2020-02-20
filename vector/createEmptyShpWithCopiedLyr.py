@@ -1,5 +1,6 @@
 def createEmptyShpWithCopiedLyr(in_lyr, out_pth, geom_type):
     import ogr
+    import os
     """
     Creates a shapefile (at an user defined path)
     that has the same fields as the input shapefile

@@ -2,18 +2,21 @@ def findDuplicatesInList(lst):
     """
     Finds duplicate variables in a list.
     :param lst: Input list.
-    :return: Returns duplicates of the list as a list.
+    :return: Returns duplicates of the list and the indeces of the second occurence of the duplicates (both as a list)
     """
     
-    unique = set()
-    duplicates = set()
+    unique_set = set()
+    duplicates_set = set()
     
-    unique_add = unique.add
-    duplicate_add = duplicates.add
+    unique_add = unique_set.add
+    duplicate_add = duplicates_set.add
+
+    index_lst = []
     
-    for item in enumerate(lst):
-        if item in unique:
+    for i, item in enumerate(lst):
+        if item in unique_set:
             duplicate_add(item)
+            index_lst.append(i)
         else:
             unique_add(item)
-    return list(duplicates)
+    return list(duplicates_set), index_lst
