@@ -1,4 +1,4 @@
-def ReprojectAndSaveNewRaster(inFilepath,outFilepath,to_EPSG):
+def reprojectAndSaveNewRaster(inFilepath,outFilepath,to_EPSG):
     """
     Reprojects a given raster to the specified Coordinate System
     :param inFilepath: Full path of input file including filename and extension, string
