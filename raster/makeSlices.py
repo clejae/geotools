@@ -1,7 +1,9 @@
 def makeSlices(array, win_size):
-    """Return a list of slices given a window size.
-    data     - two-dimensional array to get slices from
-    win_size - tuple of (rows, columns) for the moving window
+    """
+    Returns a list of slices given a window size.
+    :param array: Two-dimensional array to get slices from.
+    :param win_size: tuple of (rows, columns) for the moving window
+    :return: Slices
     """
     rows = array.shape[0] - win_size[0] + 1
     cols = array.shape[1] - win_size[1] + 1

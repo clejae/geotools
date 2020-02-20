@@ -1,10 +1,16 @@
-def openRastersAndLoadBandXtoArrays(rasternameList,bn):
+def openRastersAndLoadBandXtoArrays(raster_pth_lst, bn):
+    """
+    Loads all rasters to a list and all bands at index bn of these rasters to another list. 
+    :param raster_pth_lst: List of raster paths from which the bands should be extracted.
+    :param bn: Band number which should be loaded.
+    :return: List of rasters and list of arrays of the specified bands
+    """
     """Full Paths need to be provided.
     bn - bandnumber"""
     import gdal
     rasterList = []
     arrayList =[]
-    for rastername in rasternameList:
+    for rastername in raster_pth_lst:
         ds = (gdal.Open(rastername))
         rasterList.append(ds)
         cols = ds.RasterXSize

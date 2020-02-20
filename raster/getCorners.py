@@ -1,6 +1,8 @@
 def getCorners(path):
     """
     Extracts the corners of a raster
+	:param path: Path to raster including filename.
+	:return: Minimum X, Minimum Y, Maximum X, Maximum Y
     """
     import gdal
     ds = gdal.Open(path)

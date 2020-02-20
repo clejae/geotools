@@ -6,6 +6,7 @@ def makeRaster(in_ds, fn, data, data_type, nodata=None):
     data_type - output data type
     nodata    - optional NoData value
     """
+	import gdal
     driver = gdal.GetDriverByName('GTiff')
     out_ds = driver.Create(
         fn, in_ds.RasterXSize, in_ds.RasterYSize, 1, data_type)

@@ -1,6 +1,12 @@
 def getFilesinFolderWithEnding(folder, ext, fullPath):
-    """Opens all files with the specified ending.
-    Ending has to be a string.
+    """
+    Opens all files with the specified extention in a specified folder.
+    :param folder: Folder in which the files should be searched, string.
+    :param ext: Data file extention that should be searched (e.g. txt), string.
+    :param fullPath: Boolean
+    :return:
+    """
+    """
     """
     import os
     outlist = []
