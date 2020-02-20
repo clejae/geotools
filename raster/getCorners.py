@@ -1,4 +1,4 @@
-def GetCorners(path):
+def getCorners(path):
     """
     Extracts the corners of a raster
     """
