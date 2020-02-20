@@ -1,4 +1,4 @@
-def OpenRasterFromList(rasternameList):
+def openRasterFromList(rasternameList):
     import gdal
     rasterList = []
     for rastername in rasternameList:
