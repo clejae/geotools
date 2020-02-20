@@ -1,4 +1,4 @@
-def SpatialReferenceFromRaster(raster):
+def spatialReferenceFromRaster(raster):
     """
     Returns SpatialReference from raster dataset
     :param raster: Input raster dataset
