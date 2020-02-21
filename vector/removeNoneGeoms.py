@@ -1,23 +1,20 @@
-def removeNoneGeoms(in_shp_pth):
+def removeNoneGeoms(in_shp_pth, out_shp_pth):
 
     """
     Sometimes a shapefile has features, that have no geoms. This function removes any geom that is None.
     :param in_shp_pth: Input shapefile  
     :return: Updates the input shapefile.
-    """    
+    """
 
+    import vector
     import ogr
-
-    file_name = os.path.basename(in_shp_pth)[:-4]
 
     in_shp = ogr.Open(in_shp_pth, 0)
     in_lyr = in_shp.GetLayer()
 
-    nonones_shp_name = temp_folder + r'\\' + file_name + '_no_nones.shp'
-    nonones_shp, nonones_lyr = createEmptyShpWithCopiedLyr(in_lyr=in_lyr, out_pth=nonones_shp_name,
+    nonones_shp, nonones_lyr = vector.createEmptyShpWithCopiedLyr(in_lyr=in_lyr, out_pth=out_shp_pth,
                                                          geom_type=ogr.wkbPolygon)
     nonones_lyr_defn = nonones_lyr.GetLayerDefn()
-
 
     for f, feat in enumerate(in_lyr):
 
