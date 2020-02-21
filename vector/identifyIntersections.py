@@ -1,35 +1,27 @@
-def identifyIntersections(in_shp_pth, out_pth):
+def identifyIntersections(in_shp_pth, out_shp_pth):
     """
     VERY SLOW
     Identifies intersections between polygons of a shapefile. Writes intersections specfied output path.
     :param in_shp_pth: Input shapefile of polygons.
     :param out_pth: Output path to which the intersections are written. Input filename will be extended by
-    "_intersection".
+    "_intersections".
     :return: No object returned, but shapefile will be written to disc.
     """
     import os
     import ogr
-
-    file_name = os.path.basename(in_shp_pth)[:-4]
-
-    try:
-        if not os.path.exists(out_pth):
-            os.makedirs(out_pth)
-    except OSError:
-        print('Error: Creating directory. ' + out_pth)
+    import vector
 
     in_shp = ogr.Open(in_shp_pth, 0)
     in_lyr = in_shp.GetLayer()
 
-    copy_shp, copy_lyr = copyLayerToMemory(in_lyr)
+    copy_shp, copy_lyr = vector.copyLayerToMemory(in_lyr)
 
-    inters_shp_name = out_pth + r'\\' + file_name + '_intersection.shp'
     drv_shp = ogr.GetDriverByName('ESRI Shapefile')
     in_sr = in_lyr.GetSpatialRef()
-    if os.path.exists(inters_shp_name):
-        drv_shp.DeleteDataSource(inters_shp_name)
-    inters_shp = drv_shp.CreateDataSource(inters_shp_name)
-    lyr_name = os.path.splitext(os.path.split(inters_shp_name)[1])[0]
+    if os.path.exists(out_shp_pth):
+        drv_shp.DeleteDataSource(out_shp_pth)
+    inters_shp = drv_shp.CreateDataSource(out_shp_pth)
+    lyr_name = os.path.splitext(os.path.split(out_shp_pth)[1])[0]
     geom_type = ogr.wkbPolygon
     inters_lyr = inters_shp.CreateLayer(lyr_name, in_sr, geom_type=geom_type)
     inters_lyr.CreateField(ogr.FieldDefn('ID', ogr.OFTInteger64))
@@ -52,13 +44,13 @@ def identifyIntersections(in_shp_pth, out_pth):
                 if geom_nb.Intersects(geom_curr):
                     intersection = geom_nb.Intersection(geom_curr)
                     geom_type = intersection.GetGeometryName()
-                    if geom_type in ['MULTILINESTRING', 'POINT', 'LINESTRING','MULTIPOINT']: #alternatively mabye not in ['POLYGON', 'MULTIPOLYGON']
+                    if geom_type not in ['POLYGON', 'MULTIPOLYGON']: # in ['MULTILINESTRING', 'POINT', 'LINESTRING','MULTIPOINT']: #alternatively
                         intersection = None
                         area_inters = 0
                         # print("Intersection of {} and {} is a {}".format(id1, id2, geom_type))
                     elif intersection != None:
                         area_inters = round(intersection.Area(), 1)
-                        print("Intersection of {} and {} is NOT none. Its area is {} and its geom type is {}".format(id1, id2, area_inters, geom_type))
+                        # print("Intersection of {} and {} is NOT none. Its area is {} and its geom type is {}".format(id1, id2, area_inters, geom_type))
                     else:
                         intersection = None
                         area_inters = 0
