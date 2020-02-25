@@ -1,4 +1,6 @@
 from .copyLayerToMemory import copyLayerToMemory
+from .countInvalidGeoms import countInvalidGeoms
+from .countNoneGeoms import countNoneGeoms
 from .createEmptyShpWithCopiedLyr import createEmptyShpWithCopiedLyr
 from .extractGeomCharacteristics import extractGeomCharacteristics
 from .getFieldNames import getFieldNames
@@ -9,4 +11,3 @@ from .printLayers import printLayers
 from .removeDuplicateFeatures import removeDuplicateFeatures
 from .removeNoneGeoms import removeNoneGeoms
 from .reprojectAndSaveNewShapefile import reprojectAndSaveNewShapefile
-from .validitiyCheck import validitiyCheck
