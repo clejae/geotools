@@ -1,6 +1,6 @@
-def validitiyCheck(in_shp_pth, id_field_name):
+def countInvalidGeoms(in_shp_pth, id_field_name):
     """
-    Checks the validity of geoms in a shapefile. 
+    Counts the features that have invalid geoms in a shapefile.
     :param in_shp_pth: Input shapefile
     :param id_field_name: Field name of ID, string.
     :return: Returns a list of IDs of the features that are not valid.

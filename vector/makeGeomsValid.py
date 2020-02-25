@@ -14,13 +14,13 @@ def makeGeomsValid(in_shp_pth):
         fid = feat.GetField("ID")
         if not geom.IsValid():
 
-            print(in_shp_pth, ':', fid)
-            print("Geom_in is valid:", geom.IsValid())
+            # print(in_shp_pth, ':', fid)
+            # print("Geom_in is valid:", geom.IsValid())
 
             geom_out = geom.MakeValid()
             geom_out.Buffer(0)
-            print(geom_out.GetGeometryName())
-            print("Geom_out is valid:", geom_out.IsValid())
+            # print(geom_out.GetGeometryName())
+            # print("Geom_out is valid:", geom_out.IsValid())
             # assert feature.GetGeometryRef().IsValid()
 
             feat.SetGeometry(geom_out.Buffer(0))
