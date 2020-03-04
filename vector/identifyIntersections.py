@@ -1,4 +1,4 @@
-def identifyIntersections(in_shp_pth, out_shp_pth):
+def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
     """
     VERY SLOW
     Identifies intersections between polygons of a shapefile. Writes intersections specfied output path.
@@ -32,15 +32,18 @@ def identifyIntersections(in_shp_pth, out_shp_pth):
 
     id_inters_lst = []
     for feat_curr in in_lyr:
-        id1 = feat_curr.GetField('ID')
+
+        id1 = feat_curr.GetField(id_field)
+        print("FEATURE: {}".format(id1))
         geom_curr = feat_curr.GetGeometryRef()
         copy_lyr.SetSpatialFilter(geom_curr)
 
         for feat_nb in copy_lyr:
-            id2 = feat_nb.GetField('ID')
+            id2 = feat_nb.GetField(id_field)
             id_inters = '{0}_{1}'.format(min([id1, id2]), max([id1, id2]))
             geom_nb = feat_nb.geometry()
             if id1 != id2:
+                # print("Neighbouring features: {}".format(id2))
                 if geom_nb.Intersects(geom_curr):
                     intersection = geom_nb.Intersection(geom_curr)
                     geom_type = intersection.GetGeometryName()
@@ -75,6 +78,9 @@ def identifyIntersections(in_shp_pth, out_shp_pth):
                     ouf_feat = None
 
                     id_inters_lst.append(id_inters)
+                # else:
+                #     print("{} is already in the list".format(id_inters))
+
             else:
                 pass
 
