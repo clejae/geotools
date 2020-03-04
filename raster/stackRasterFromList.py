@@ -1,4 +1,4 @@
-def stackRasterFromList(rasterList, outputPath):
+def StackRasterFromList(rasterList, outputPath):
     """
     Stacks the first band of n rasters that are stored in a list. The properties
     of the first raster are used to set the definition of the output raster.
@@ -13,11 +13,12 @@ def stackRasterFromList(rasterList, outputPath):
     x_res = rasterList[0].RasterXSize
     y_res = rasterList[0].RasterYSize
 
-    target_ds = gdal.GetDriverByName('GTiff').Create(outputPath, x_res, y_res, len(rasterList), data_type)
+    target_ds = gdal.GetDriverByName('GTiff').Create(outputPath, x_res, y_res, len(rasterList), data_type, options = [ 'COMPRESS=DEFLATE' ])
     target_ds.SetGeoTransform(gt)
     target_ds.SetProjection(pr)
 
     for i in range(0, len(rasterList)):
+        print(i+1, len(rasterList))
         band = target_ds.GetRasterBand(i + 1)
         no_data_value = rasterList[i].GetRasterBand(1).GetNoDataValue()
         band.WriteArray(rasterList[i].GetRasterBand(1).ReadAsArray())
