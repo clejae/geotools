@@ -4,7 +4,10 @@ from .countNoneGeoms import countNoneGeoms
 from .createEmptyShpWithCopiedLyr import createEmptyShpWithCopiedLyr
 from .extractGeomCharacteristics import extractGeomCharacteristics
 from .getFieldNames import getFieldNames
+from .identifyEntailedFeatures import identifyEntailedFeatures
 from .identifyIntersections import identifyIntersections
+from .identifyIntersectionsSec import identifyIntersectionsSec
+from .importQgis import importQgis
 from .makeGeomsValid import makeGeomsValid
 from .printFieldNames import printFieldNames
 from .printLayers import printLayers
