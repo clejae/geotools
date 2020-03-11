@@ -1,4 +1,4 @@
-def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
+def identifyIntersectionsSec(in_shp_pth, out_shp_pth, id_field="IDInters"):
     """
     VERY SLOW
     Identifies intersections between polygons of a shapefile. Writes intersections specfied output path.
@@ -10,6 +10,7 @@ def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
     import os
     import ogr
     import vector
+    import general
 
     in_shp = ogr.Open(in_shp_pth, 0)
     in_lyr = in_shp.GetLayer()
@@ -34,13 +35,19 @@ def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
     for feat_curr in in_lyr:
 
         id1 = feat_curr.GetField(id_field)
-        print("FEATURE: {}".format(id1))
+        id1 = general.orderAndConcatItems(id1)
+
+        # print("FEATURE: {}".format(id1))
         geom_curr = feat_curr.GetGeometryRef()
         copy_lyr.SetSpatialFilter(geom_curr)
 
         for feat_nb in copy_lyr:
             id2 = feat_nb.GetField(id_field)
-            id_inters = '{0}_{1}'.format(min([id1, id2]), max([id1, id2]))
+            id2 = general.orderAndConcatItems(id2)
+
+            ids_comb = id1 + '_' + id2
+            id_inters = general.orderAndConcatItems(ids_comb)
+
             geom_nb = feat_nb.geometry()
             if id1 != id2:
                 # print("Neighbouring features: {}".format(id2))
@@ -51,8 +58,12 @@ def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
                         intersection = None
                         area_inters = 0
                         # print("Intersection of {} and {} is a {}".format(id1, id2, geom_type))
+                    # if geom_type in ['MULTILINESTRING', 'POINT', 'LINESTRING', 'MULTIPOINT']:
+                    # if geom_type not in ['POLYGON', 'MULTIPOLYGON']:
+                    #     intersection = intersection.Buffer(0.2)
+                    #     area_inters = round(intersection.Area(), 2)
                     elif intersection != None:
-                        area_inters = round(intersection.Area(), 1)
+                        area_inters = round(intersection.Area(), 2)
                         # print("Intersection of {} and {} is NOT none. Its area is {} and its geom type is {}".format(id1, id2, area_inters, geom_type))
                     else:
                         intersection = None
@@ -65,7 +76,7 @@ def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
 
                 ## if the id of the intersection is not already in the list and its area is bigger than 0
                 ## then add this feature to the intersection layer
-                if area_inters > 0.0 and id_inters not in id_inters_lst:
+                if area_inters > 0.00 and id_inters not in id_inters_lst:
                     intersection = intersection.Buffer(0)
                     intersection = intersection.MakeValid()
                     wkt_inters = intersection.ExportToWkt()

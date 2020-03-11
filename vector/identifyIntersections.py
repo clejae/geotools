@@ -34,7 +34,7 @@ def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
     for feat_curr in in_lyr:
 
         id1 = feat_curr.GetField(id_field)
-        print("FEATURE: {}".format(id1))
+        # print("FEATURE: {}".format(id1))
         geom_curr = feat_curr.GetGeometryRef()
         copy_lyr.SetSpatialFilter(geom_curr)
 
@@ -51,6 +51,10 @@ def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
                         intersection = None
                         area_inters = 0
                         # print("Intersection of {} and {} is a {}".format(id1, id2, geom_type))
+                    # if geom_type in ['MULTILINESTRING', 'POINT', 'LINESTRING', 'MULTIPOINT']:
+                    # if geom_type not in ['POLYGON', 'MULTIPOLYGON']:
+                    #     intersection = intersection.Buffer(0.2)
+                    #     area_inters = round(intersection.Area(), 2)
                     elif intersection != None:
                         area_inters = round(intersection.Area(), 1)
                         # print("Intersection of {} and {} is NOT none. Its area is {} and its geom type is {}".format(id1, id2, area_inters, geom_type))
