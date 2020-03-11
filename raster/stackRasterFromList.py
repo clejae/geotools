@@ -1,4 +1,4 @@
-def StackRasterFromList(rasterList, outputPath):
+def stackRasterFromList(rasterList, outputPath):
     """
     Stacks the first band of n rasters that are stored in a list. The properties
     of the first raster are used to set the definition of the output raster.
