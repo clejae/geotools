@@ -1,8 +1,17 @@
 def removeDuplicates(in_shp_pth, no_dups_pth):
 
+    """
+    This function looks for duplicates of feautres based on two geometry criteria (area and centroid).
+    If the same area and centroid occur in another geometry as well,
+    only the first feature will be written to the output shapefile.
+    :param in_shp_pth: Path to input shapefile. String.
+    :param no_dups_pth: Path to output shapefile, including file name and ".shp". String.
+    :return: Output shapefile will be written to specified location.
+    """
+
     import general
     import vector
-
+    import ogr
 
     id_lst, area_lst, centroid_lst = vector.extractGeomCharacteristics(in_shp_pth)
 

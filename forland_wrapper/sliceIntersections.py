@@ -1,8 +1,20 @@
 def sliceIntersections(in_shp_pth, final_out_shp):
 
+    """
+    This function looks for intersections of intersections (thus the intersections need to be calculated beforehand
+    via the function vector.identifyIntersections). It does this in a loop until no further intersections can be
+    identified. Finally, it creates an output file, where all intersections are broken down to several polygons.
+    These polygons carry the field "IDInters" which tells the user which original polygons are overlapping at these
+    small intersection polygons.
+    :param in_shp_pth: Path to input shapefile, including file name. String.
+    :param final_out_shp: Path to output shapefile, including file name. String.
+    :return: Writes the output file to the disc.
+    """
+
     import os
     import ogr
     import vector
+    import forland_wrapper
 
     QgsApplication, QgsProcessingRegistry, start_app, QgsNativeAlgorithms, processing, app = vector.importQgis()
     QgsApplication.processingRegistry().addProvider(QgsNativeAlgorithms())
@@ -45,7 +57,7 @@ def sliceIntersections(in_shp_pth, final_out_shp):
         input_shp = in_shp_pth
         overlay_shp = in_shp_pth[:-4] + '_01.shp'
         output_shp = in_shp_pth[:-4] + '_difference.shp'
-        validityChecking(overlay_shp)
+        forland_wrapper.validityChecking(overlay_shp)
         param_dict = {'INPUT': input_shp, 'OVERLAY': overlay_shp, 'OUTPUT': output_shp}
         print(param_dict)
         processing.run('native:difference', param_dict)
@@ -57,9 +69,9 @@ def sliceIntersections(in_shp_pth, final_out_shp):
         merge_layers = [in_shp_pth[:-4] + '_{0:02d}.shp'.format(i)]
         for x in range(i, 1, -1):
             input_shp = in_shp_pth[:-4] + '_{0:02d}.shp'.format(x-1)
-            validityChecking(input_shp)
+            forland_wrapper.validityChecking(input_shp)
             overlay_shp = in_shp_pth[:-4] + '_{0:02d}.shp'.format(x)
-            validityChecking(overlay_shp)
+            forland_wrapper.validityChecking(overlay_shp)
             output_shp = in_shp_pth[:-4] + '_{0:02d}_difference.shp'.format(x-1,x)
             param_dict = {'INPUT': input_shp, 'OVERLAY': overlay_shp, 'OUTPUT': output_shp}
             print(param_dict)

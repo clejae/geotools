@@ -1,4 +1,4 @@
-def countNoneGeoms(in_shp_pth, id_field_name):
+def countNoneGeoms(in_shp_pth, id_field_name = "ID"):
     """
     Counts the occurence of features that have no geometries.
 
@@ -16,7 +16,7 @@ def countNoneGeoms(in_shp_pth, id_field_name):
 
     for feat in in_lyr:
         geom = feat.GetGeometryRef()
-        fid = feat.GetField("ID")
+        fid = feat.GetField(id_field_name)
 
         if geom == None:
             out_lst.append(fid)
