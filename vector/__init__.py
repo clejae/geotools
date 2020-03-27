@@ -1,3 +1,4 @@
+from .cloneFieldDefn import cloneFieldDefn
 from .copyLayerToMemory import copyLayerToMemory
 from .countInvalidGeoms import countInvalidGeoms
 from .countNoneGeoms import countNoneGeoms
