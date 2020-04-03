@@ -24,6 +24,8 @@ def sliceIntersections(in_shp_pth, final_out_shp):
 
     num_feat = in_lyr.GetFeatureCount()
 
+    drv = ogr.GetDriverByName("ESRI Shapefile")
+
     ## Identify intersections, as long as there were intersections detected
     in_pth_temp = in_shp_pth
     i = 0
@@ -44,10 +46,11 @@ def sliceIntersections(in_shp_pth, final_out_shp):
     ## delete the file, that was lasty created and
     ## that has effectively no geoms (i.e. intersections) in it
     if i > 0:
-        os.remove(out_shp_pth)
-        os.remove(out_shp_pth[:-3] + 'dbf')
-        os.remove(out_shp_pth[:-3] + 'prj')
-        os.remove(out_shp_pth[:-3] + 'shx')
+        drv.DeleteDataSource(out_shp_pth)
+        # os.remove(out_shp_pth)
+        # os.remove(out_shp_pth[:-3] + 'dbf')
+        # os.remove(out_shp_pth[:-3] + 'prj')
+        # os.remove(out_shp_pth[:-3] + 'shx')
 
     ## remove the intersections from the upper-level layer
     ## and afterwards add the intersection geoms to the upper level layer
@@ -90,5 +93,6 @@ def sliceIntersections(in_shp_pth, final_out_shp):
 
         param_dict = {'LAYERS': merge_layers, 'CRS': merge_layers[0], 'OUTPUT': final_out_shp}
         processing.run('qgis:mergevectorlayers', param_dict)
+
     else:
         print("The input shapefile does not have any intersections.")

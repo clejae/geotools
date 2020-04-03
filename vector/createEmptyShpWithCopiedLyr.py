@@ -19,6 +19,6 @@ def createEmptyShpWithCopiedLyr(in_lyr, out_pth, geom_type):
     lyr_name = os.path.splitext(os.path.split(out_pth)[1])[0]
     lyr_out = shp_out.CreateLayer(lyr_name, in_sr, geom_type=geom_type)
     for i in range(0, in_lyr_defn.GetFieldCount()):
-            field_def = in_lyr_defn.GetFieldDefn(i)
-            lyr_out.CreateField(field_def)
+        field_def = in_lyr_defn.GetFieldDefn(i)
+        lyr_out.CreateField(field_def)
     return shp_out, lyr_out
