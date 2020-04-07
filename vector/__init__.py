@@ -15,3 +15,4 @@ from .printLayers import printLayers
 from .removeDuplicateFeatures import removeDuplicateFeatures
 from .removeNoneGeoms import removeNoneGeoms
 from .reprojectAndSaveNewShapefile import reprojectAndSaveNewShapefile
+from .reprojectShape import reprojectShape
