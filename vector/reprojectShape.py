@@ -1,4 +1,4 @@
-def reprojectShape(in_shp, out_shp_pth, out_sr_epsg, geom_type=ogr.wkbPolygon):
+def reprojectShape(in_shp, out_shp_pth, out_sr_epsg, geom_type):
     """
     Function found at: https://pcjericks.github.io/py-gdalogr-cookbook/projection.html. Slightly changed.
 
@@ -8,7 +8,7 @@ def reprojectShape(in_shp, out_shp_pth, out_sr_epsg, geom_type=ogr.wkbPolygon):
     :param out_shp_pth: Output path to which the reprojected shapefile will be written.
                         Should include filename.
     :param out_sr_epsg: EPSG number of target spatial reference.
-    :param geom_type: Geometry type of output shapefile. Default is polygon.
+    :param geom_type: Geometry type of output shapefile.
     :return: No object returned, but shapefile will be written to disc.
     """
 
