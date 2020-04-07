@@ -1,11 +1,12 @@
 def reprojectShape(in_shp, out_shp_pth, out_sr_epsg, geom_type=ogr.wkbPolygon):
     """
     Function found at: https://pcjericks.github.io/py-gdalogr-cookbook/projection.html. Slightly changed.
-    Identifies intersections between polygons of a shapefile. Writes intersections specfied output path.
+
+    Reprojects a shapefile to given spatial reference.
+
     :param in_shp: Input shapefile .
     :param out_shp_pth: Output path to which the reprojected shapefile will be written.
                         Should include filename.
-
     :param out_sr_epsg: EPSG number of target spatial reference.
     :param geom_type: Geometry type of output shapefile. Default is polygon.
     :return: No object returned, but shapefile will be written to disc.
