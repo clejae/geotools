@@ -1,4 +1,4 @@
-def makeGeomsValid(in_shp_pth):
+def makeGeomsValid(in_shp_pth, id_field = "ID"):
     """
     Makes geoms valid by buffering it with 0 and appliyng the .MakeValid()-ogr function.
     :param in_shp_pth: Input Shapefile
@@ -11,7 +11,7 @@ def makeGeomsValid(in_shp_pth):
     in_lyr = in_shp.GetLayer()
     for feat in in_lyr:
         geom = feat.GetGeometryRef()
-        fid = feat.GetField("ID")
+        fid = feat.GetField(id_field)
         if not geom.IsValid():
 
             # print(in_shp_pth, ':', fid)
