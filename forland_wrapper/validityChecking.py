@@ -1,11 +1,11 @@
-def validityChecking(in_shp_pth, id_field = "ID"):
+def validityChecking(in_shp_pth, id_field_name ="ID"):
     import vector
 
     print("Validity check of", in_shp_pth)
-    invalid_geoms = vector.countInvalidGeoms(in_shp_pth, id_field)
+    invalid_geoms = vector.countInvalidGeoms(in_shp_pth = in_shp_pth, id_field_name = id_field_name)
     if len(invalid_geoms) > 0:
-        vector.makeGeomsValid(in_shp_pth, id_field)
-        invalid_geoms_step2 = vector.countInvalidGeoms(in_shp_pth, id_field)
+        vector.makeGeomsValid(in_shp_pth = in_shp_pth, id_field_name= id_field_name)
+        invalid_geoms_step2 = vector.countInvalidGeoms(in_shp_pth = in_shp_pth, id_field_name = id_field_name)
 
         if len(invalid_geoms_step2) > 0:
             print(invalid_geoms_step2, "could not be made valid.")

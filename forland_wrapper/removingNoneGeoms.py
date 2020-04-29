@@ -6,8 +6,6 @@ def removingNoneGeoms(in_shp_pth, out_shp_pth, id_field = "ID"):
     :param id_field: ID field, for function countNoneGeoms. String. Default = "ID".
     :return:
     """
-
-
     import vector
 
     print("Removing features with no geometry in:", in_shp_pth)
