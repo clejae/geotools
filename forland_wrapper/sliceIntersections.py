@@ -30,7 +30,7 @@ def sliceIntersections(in_shp_pth, final_out_shp):
     in_pth_temp = in_shp_pth
     i = 0
     while num_feat > 0:
-        print(i)
+        # print(i)
         i += 1
         out_shp_pth = in_shp_pth[:-4] + '_{0:02d}.shp'.format(i)
         print(out_shp_pth)

@@ -1,4 +1,4 @@
-def writeArrayToRaster(in_array, out_path, gt, pr, no_data_value, type_code=None, options=['COMPRESS=DEFLATE']):
+def writeArrayToRaster(in_array, out_path, gt, pr, no_data_value, type_code=None, options=['COMPRESS=DEFLATE', 'PREDICTOR=1']):
     """
     Writes an array to a tiff-raster. If no type code of output is given, it will be extracted from the input array.
     As default a deflate compression is used, but can be specified by the user.

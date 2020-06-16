@@ -9,6 +9,9 @@ def validityChecking(in_shp_pth, id_field_name ="ID"):
 
         if len(invalid_geoms_step2) > 0:
             print(invalid_geoms_step2, "could not be made valid.")
+            file = open(in_shp_pth[:-3] + 'txt', "w+")
+            file.write(str(invalid_geoms_step2) + " could not be made valid.")
+            file.close()
         else:
             print("All invalid geometries were made valid.")
     else:

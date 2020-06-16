@@ -51,26 +51,18 @@ def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
                 # print("Neighbouring features: {}".format(id2))
                 if geom_nb.Intersects(geom_curr):
                     intersection = geom_nb.Intersection(geom_curr)
-                    geom_type = intersection.GetGeometryName()
-                    if geom_type not in ['POLYGON', 'MULTIPOLYGON']: # in ['MULTILINESTRING', 'POINT', 'LINESTRING','MULTIPOINT']: #alternatively
-                        intersection = None
+                    if intersection == None:
                         area_inters = 0
-                        # print("Intersection of {} and {} is a {}".format(id1, id2, geom_type))
-                    # if geom_type in ['MULTILINESTRING', 'POINT', 'LINESTRING', 'MULTIPOINT']:
-                    # if geom_type not in ['POLYGON', 'MULTIPOLYGON']:
-                    #     intersection = intersection.Buffer(0.2)
-                    #     area_inters = round(intersection.Area(), 2)
-                    elif intersection != None:
-                        area_inters = round(intersection.Area(), 1)
-                        # print("Intersection of {} and {} is NOT none. Its area is {} and its geom type is {}".format(id1, id2, area_inters, geom_type))
                     else:
-                        intersection = None
-                        area_inters = 0
-                        # print("Intersection of {} and {} is none. Its area is {}".format(id1, id2, area_inters))
+                        geom_type = intersection.GetGeometryName()
+                        if geom_type not in ['POLYGON', 'MULTIPOLYGON']: # in ['MULTILINESTRING', 'POINT', 'LINESTRING','MULTIPOINT']: #alternatively
+                            intersection = None
+                            area_inters = 0
+                        else:
+                            area_inters = round(intersection.Area(), 1)
                 else:
                     intersection = None
                     area_inters = 0
-                    # print("{} and {} do not intersect.")
 
                 ## if the id of the intersection is not already in the list and its area is bigger than 0
                 ## then add this feature to the intersection layer
@@ -91,8 +83,6 @@ def identifyIntersections(in_shp_pth, out_shp_pth, id_field="ID"):
                     ouf_feat = None
 
                     id_inters_lst.append(id_inters)
-                # else:
-                #     print("{} is already in the list".format(id_inters))
 
             else:
                 pass

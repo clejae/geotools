@@ -1,6 +1,7 @@
 from .convertRasterDtypeToInt import convertRasterDtypeToInt
 from .getCorners import getCorners
 from .getDateList import getDateList
+from .getExtent import getExtent
 from .getMinimumRasterExtent import getMinimumRasterExtent
 from .makeRaster import makeRaster
 from .makeSlices import makeSlices

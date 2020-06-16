@@ -3,6 +3,7 @@ from .copyLayerToMemory import copyLayerToMemory
 from .countInvalidGeoms import countInvalidGeoms
 from .countNoneGeoms import countNoneGeoms
 from .createEmptyShpWithCopiedLyr import createEmptyShpWithCopiedLyr
+from .deleteShp import deleteShp
 from .extractGeomCharacteristics import extractGeomCharacteristics
 from .getFieldNames import getFieldNames
 from .identifyEntailedFeatures import identifyEntailedFeatures

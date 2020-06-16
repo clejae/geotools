@@ -1,6 +1,6 @@
 def printFieldNames(lyr):
     """
-    Prints the field names and type, width and precision of field.
+    Prints the field names and type, width and precision offor i in range(lyr_defn.GetFieldCount()): field.
     :param lyr: Input layer of a shapefile
     :return: Print.
     """
