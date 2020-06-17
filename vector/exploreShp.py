@@ -6,6 +6,7 @@ def exploreShp(shp, num_feat):
     """
     import vector
 
+    lyr = shp.GetLayer()
     fnames = vector.getFieldNames(shp)
     print(fnames)
     for i in range(num_feat):
