@@ -8,6 +8,7 @@ from .makeRaster import makeRaster
 from .makeSlices import makeSlices
 from .openRasterAndLoadBandXtoArrays import openRastersAndLoadBandXtoArrays
 from .openRasterFromList import openRasterFromList
+from .ResampleRasterToReferenceRaster import ResampleRasterToReferenceRaster
 from .reprojectAndSaveNewRaster import reprojectAndSaveNewRaster
 from .spatialReferenceFromRaster import spatialReferenceFromRaster
 from .stackMultibandRasters import stackMultibandRasters
